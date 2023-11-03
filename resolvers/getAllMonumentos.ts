@@ -6,7 +6,15 @@ export const getAllMonumentos = async(req:Request, res:Response) => {
     
     const monumentos = await MonumentoModel.find({}).exec();
 
-    res.status(200).send(monumentos);
+    const datosMonumentos = monumentos.map((x) => {
+        return {
+            id: x._id,
+            nombre: x.nombre,
+            pais: x.pais,
+        }
+    })
+
+    res.status(200).send(datosMonumentos);
     
 
 }

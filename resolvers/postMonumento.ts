@@ -6,7 +6,7 @@ import { getPais } from './getPais.ts';
 import { getCountryData } from './getCountryData.ts';
 
 export const postMonumento = async (req: Request, res: Response) => {
-    const body: Partial<Omit<MonumentoModelType,"_id">>= req.body;
+    //const body: Partial<Omit<MonumentoModelType,"_id">>= req.body;
 
     const {nombre, descripcion, codigoPostal, codigoIso} = req.body;
     
@@ -15,7 +15,6 @@ export const postMonumento = async (req: Request, res: Response) => {
         return;
     }
 
-    //checkear que el iso y el codigo postal se correspondan
     try{
         const {nomPais, nomContinente} = await getCountryData(codigoIso);
     
